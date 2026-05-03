@@ -1,0 +1,136 @@
+/* ============================================
+   Keyframes
+   ============================================ */
+@keyframes shimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top;    opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
+  51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ============================================
+   Scroll-reveal  (.reveal / .is-visible)
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger helpers */
+.reveal--delay-1 { transition-delay: 90ms;  }
+.reveal--delay-2 { transition-delay: 180ms; }
+.reveal--delay-3 { transition-delay: 270ms; }
+.reveal--delay-4 { transition-delay: 360ms; }
+
+/* ============================================
+   Hero scroll indicator
+   ============================================ */
+.hero__scroll-line {
+  animation: scrollLine 2.4s ease-in-out infinite;
+}
+
+/* ============================================
+   Ambient cursor glow
+   ============================================ */
+.cursor-glow {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(239, 159, 39, 0.045) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  will-change: left, top;
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+}
+
+/* ============================================
+   Utility — underline hover
+   ============================================ */
+.u-underline-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.u-underline-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.u-underline-hover:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   Reduced-motion  (accessibility)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cursor-glow { display: none; }
+}

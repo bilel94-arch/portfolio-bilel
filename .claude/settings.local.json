@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Bilel\\\\Documents\\\\DIVERS\\\\DOC-IMPORTANTS\\\\portfolio-bilel\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Bilel\\\\Documents\\\\DIVERS\\\\DOC-IMPORTANTS\\\\portfolio-bilel\" -Recurse -Force | Sort-Object FullName | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Bilel\\\\Documents\\\\DIVERS\\\\DOC-IMPORTANTS\\\\portfolio-bilel\\\\assets\\\\img\" -Recurse 2>$null | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Bilel\\\\Documents\\\\DIVERS\\\\DOC-IMPORTANTS\\\\portfolio-bilel\\\\assets\\\\projects\" -Recurse 2>$null | ForEach-Object { $_.FullName })"
+    ]
+  }
+}
