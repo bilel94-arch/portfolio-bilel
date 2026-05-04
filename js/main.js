@@ -12,7 +12,6 @@
   let W, H, particles = [];
 
   const ACCENT = 'rgba(239,159,39,';
-  const COUNT  = 55;
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -32,7 +31,8 @@
   }
 
   function init() {
-    particles = Array.from({ length: COUNT }, () => new Particle());
+    const count = window.innerWidth <= 768 ? 20 : 55;
+    particles = Array.from({ length: count }, () => new Particle());
   }
 
   function draw() {
